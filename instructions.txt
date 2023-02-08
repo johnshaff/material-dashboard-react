@@ -1,0 +1,35 @@
+This is a vanilla react project using the Material UI (MUI) style template
+
+Start the project by running cd'ing into the project directory after it's been cloned locally.
+Run this command and it will install all the dependencies, and reveal any errors:
+
+npm install
+
+I believe either the engine key:values were missing from the package.json file or the version for the node
+node key was bad. In either case this is the correct engine config:
+
+  "engines": {
+    "node": "19.x",
+    "npm": "9.x"
+  }
+
+the package.json file has a script for 'start' so use the following to serve locally:
+
+npm start
+
+If it's working locally it's time to deploy to heroku using the cli, while you're in the project directory
+after you've pushed all your changes to remote 'git push origin main':
+
+heroku create
+
+Now that your project has a dyno and name on heroku, it's time to deploy:
+
+git push heroku main
+
+This app requires more memory so the build failed with the default dyno memory. Had to run the following to increase 
+memory to 1024, and everything worked fine after that:
+
+heroku config:set NODE_OPTIONS="--max_old_space_size=1024"
+
+
+
